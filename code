@@ -30,17 +30,30 @@ srand(time(0));
     int score=0;
     
     while(gameRunning){
-     
+
       for (int row = 0; row < BOARD_SIZE; ++row) {
             for (int col = 0; col < BOARD_SIZE; ++col) {
                 cout << board[row][col] << " ";
             }
             cout << endl;
         } 
-      
+        
+        char move;
+        cout << "Enter your move (a - left, d - right): ";
+        cin >> move;
+         board[playerRow][playerCol] = EMPTY;
+         
+       if (move == 'a' && playerCol > 0) {
+            --playerCol;
+        } else if (move == 'd' && playerCol < BOARD_SIZE - 1) {
+            ++playerCol;
+        }
+  
+
+    
+    
 }
 cout << "Game over! Your score: " << score << endl;
 return 0;
 
-}
 }
