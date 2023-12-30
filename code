@@ -1,1 +1,24 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
 
+const int BOARD_SIZE = 10;
+const char EMPTY = ' ';
+const char BALL = 'O';
+const char PLAYER = 'P';
+
+int main(){
+
+
+  char board[BOARD_SIZE][BOARD_SIZE];
+    int playerRow = BOARD_SIZE - 1;
+    int playerCol = BOARD_SIZE / 2;
+    int ballRow = 0;
+    int ballCol = rand() % BOARD_SIZE;
+    
+    
+    
+       
+
+}
