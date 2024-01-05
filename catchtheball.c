@@ -24,7 +24,5 @@ int brow = 0;// first row te ball
 
 
  for (int i= 0; i < bsz; i++) {
- for (int j = 0; col < BOARD_SIZE; ++col) {// column ar row same size
-board[row][col] = EMPTY; // at first empty kora
- }
+ 
 }
