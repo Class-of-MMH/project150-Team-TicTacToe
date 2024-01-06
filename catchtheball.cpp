@@ -1,9 +1,83 @@
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
 using namespace std;
-//creating our game field
-const int BOARD_SIZE=10;
-const char empty=' ';
-const char ball='O';
-const char player='P';
+
+const char blank = ' ';
+const char ball = 'O';
+const char player = 'P';
+
+int main(){
+srand(time(0));
+
+
+char move;
+
+move=' ';
+int bsz,lev ; // board size and level
+cout <<"Choose a level: \n 1. easy   2. medium   3. hard\n press a number 1/2/3: ";
+cin >>lev;
+if(lev==1) bsz=4; else if(lev==2) bsz=6; else bsz=10;
+
+
+
+char brd[bsz][bsz]; // board
+int prow = bsz - 1;// last row te
+ int pcol = bsz/ 2;// middle e nambe at first
+int brow = 0;// first row te ball
+ int bcol = rand() % bsz;// less than board size, array er index ball
+
+for (int row = 0; row < bsz; ++row) {
+ for (int col = 0; col < bsz; ++col) {// column ar row same size
+brd[row][col] = ' '; // at first empty kora
+ }
+}
+brd[prow][pcol] = player;// player icon p
+ brd[brow][bcol] = ball; // ball icon o
+
+// game shesh na cholbe oitar jonno
+int score=0, life=3, replay=1;
+
+
+
+
+for(int pl=0;pl<life;pl++){
+        bool gameRunning= true;
+
+
+
+if(pl ){
+    brd[prow][bcol] = ' ';// ager ta clean korbo
+        brow = 0;// abar ball porbe
+ bcol = rand() % bsz;
+brd[brow][bcol] = ball; // ball set
+ }
+
+while(gameRunning){ // jotokkon true
+ system("cls");// notun kore
+
+
+
+
+for (int row = 0; row < bsz; ++row) {
+ for (int col = 0; col < bsz; ++col) {
+cout << brd[row][col] << " ";// print kora
+ }
+ cout << endl;
+ }
+
+
+if (brow == bsz - 1 ) {
+ gameRunning = false;
+ }
+
+
+}
+}
+
+}
+
+return 0;
+
+}
