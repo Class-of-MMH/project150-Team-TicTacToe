@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -11,16 +10,12 @@ const char player = 'P';
 int main(){
 srand(time(0));
 
-
-char move;
 int rst=1;
 char move='s';
 
 while(rst && move=='s')
 {
 
-move=' ';
-int bsz,lev ;
 move=' ';
 int bsz,lev ; // board size and level
 cout <<"Choose a level: \n 1. easy   2. medium   3. hard\n press a number 1/2/3: ";
@@ -48,11 +43,12 @@ int score=0, life=3, replay=1;
 
 
 
-
+while(replay)
+{ if(move== 'e' ||move== 's' ) break;
 for(int pl=0;pl<life;pl++){
         bool gameRunning= true;
 
-
+if(move== 'e' ||move== 's' ) break;
 
 if(pl ){
     brd[prow][bcol] = ' ';// ager ta clean korbo
@@ -80,7 +76,7 @@ cout << brd[row][col] << " ";// print kora
   for (int ii = 0; ii <(3-pl) ; ii++) { cout<<"<3  "; }
  for (int ii = 0; ii <(pl) ; ii++) { cout<<"X  "; }
  printf(")\n  ");
- cout << "Enter your move (l - left, r- right): ";
+ cout << "Enter your move (l - left, r- right, n- no move, e- exit, s- restart): ";
  cin >> move;// left right input
 
   brd[prow][pcol] = blank;// nw position e jabe ager position empty
@@ -90,44 +86,60 @@ cout << brd[row][col] << " ";// print kora
  } else if (move == 'r' && pcol < bsz- 1) {
  ++pcol;// daane
  }
+if (move=='s') { score=-1; pl=0; }
 
-brd[prow][pcol] = player;// new position
+
+ brd[prow][pcol] = player;// new position
 
  brd[brow][bcol] = blank;//ager positon e ball nei
 
 
 
 
+ if (brow >= prow-2) {
+ ++brow;
+ } else {
 
- ++brow;// nichee 
-
+ int direction = rand() % 2;
+ if (direction == 0 && bcol > 0) {
+--bcol;
+ }
+ else if (direction == 1 && bcol < bsz - 1 ) {
+++bcol;
+ }
+ ++brow;
+ }
  if (brow == prow && bcol == pcol  ) {
  ++score;
  brow = 0;
- bcol = rand() % bsz;// abar
+ bcol = rand() % bsz;
  }
 brd[brow][bcol] = ball;
 
+
+if (brow == bsz - 1 || move=='e'|| move=='s') {
+ gameRunning = false;
+ }
+
+
+}
+}
  system("cls");
  if (move!='s')
  {
   if (move!='e')
 
- 
-
-if (brow == bsz - 1 ) {
- gameRunning = false;
- }
 {cout << "life left : 0 " <<endl << "Game over! Your score: " << score << endl;
 replay=0;
 cout << "Wanna play again? press 1 to replay -" ; cin >> replay;}}
 
-
+system("cls");
 }
-}
-
 }
 
 return 0;
 
 }
+
+
+
