@@ -68,6 +68,26 @@ cout << brd[row][col] << " ";// print kora
  }
 
 
+ cout << "Your score: " << score << endl;
+  cout << "life left: " << 3-pl<<" ( " ;
+  for (int ii = 0; ii <(3-pl) ; ii++) { cout<<"<3  "; }
+ for (int ii = 0; ii <(pl) ; ii++) { cout<<"X  "; }
+ printf(")\n  ");
+ cout << "Enter your move (l - left, r- right): ";
+ cin >> move;// left right input
+
+  brd[prow][pcol] = blank;// nw position e jabe ager position empty
+
+ if (move == 'l' && pcol > 0) {
+ --pcol;// bame
+ } else if (move == 'r' && pcol < bsz- 1) {
+ ++pcol;// daane
+ }
+
+
+
+ 
+
 if (brow == bsz - 1 ) {
  gameRunning = false;
  }
