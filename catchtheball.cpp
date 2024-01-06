@@ -84,6 +84,22 @@ cout << brd[row][col] << " ";// print kora
  ++pcol;// daane
  }
 
+brd[prow][pcol] = player;// new position
+
+ brd[brow][bcol] = blank;//ager positon e ball nei
+
+
+
+
+
+ ++brow;// nichee 
+
+ if (brow == prow && bcol == pcol  ) {
+ ++score;
+ brow = 0;
+ bcol = rand() % bsz;// abar
+ }
+brd[brow][bcol] = ball;
 
 
  
