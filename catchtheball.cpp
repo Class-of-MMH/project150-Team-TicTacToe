@@ -107,6 +107,9 @@ brd[brow][bcol] = ball;
 if (brow == bsz - 1 ) {
  gameRunning = false;
  }
+{cout << "life left : 0 " <<endl << "Game over! Your score: " << score << endl;
+replay=0;
+cout << "Wanna play again? press 1 to replay -" ; cin >> replay;}}
 
 
 }
