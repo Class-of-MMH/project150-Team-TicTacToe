@@ -101,6 +101,10 @@ brd[prow][pcol] = player;// new position
  }
 brd[brow][bcol] = ball;
 
+ system("cls");
+ if (move!='s')
+ {
+  if (move!='e')
 
  
 
