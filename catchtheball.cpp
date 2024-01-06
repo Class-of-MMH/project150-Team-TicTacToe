@@ -13,7 +13,14 @@ srand(time(0));
 
 
 char move;
+int rst=1;
+char move='s';
 
+while(rst && move=='s')
+{
+
+move=' ';
+int bsz,lev ;
 move=' ';
 int bsz,lev ; // board size and level
 cout <<"Choose a level: \n 1. easy   2. medium   3. hard\n press a number 1/2/3: ";
