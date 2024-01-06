@@ -10,11 +10,17 @@ const char player = 'P';
 
 int main(){
 srand(time(0));
+int rst=1;
+char move='s';
 
+while(rst && move=='s')
+{
+
+move=' ';
 int bsz,lev ; // board size and level
 printf("Choose a level: \n 1. easy   2. medium   3. hard\n press a number 1/2/3:");
 scanf("%d",&lev);
-if(lev==3) bsz=4; else if(lev==2) bsz=6; else bsz=10;
+if(lev==1) bsz=4; else if(lev==2) bsz=6; else bsz=10;
 
 
 char brd[bsz][bsz]; // board
@@ -34,15 +40,18 @@ brd[prow][pcol] = player;// player icon p
  brd[brow][bcol] = ball; // ball icon o
 
 // game shesh na cholbe oitar jonno
-int score=0, life=3;
-char move;
+int score=0, life=3, replay=1;
 
 
-//ashol kahini start
+
+while(replay)
+{
+
+ if(move== 'e' ||move== 's' ) break;
 for(int pl=0;pl<life;pl++){
         int gameRunning= 1;
 
-if(move== 'e') break;
+if(move== 'e' ||move== 's' ) break;
 
 if(pl){
     brd[prow][bcol] = ' ';// ager ta clean korbo
@@ -84,22 +93,21 @@ if (move=='s') { score=-1; pl=0; } // restart er jonno
  brd[brow][bcol] = blank;//ager positon e ball nei
 
 
- if (brow < prow-2) { // ekhono porbe , 2 ghor porjonto ball side e norbe
-   // row barbe, niche porbe
+ if (brow >= prow-2) {
+ ++brow;
+ } else {
 
-
- int db = rand() % 2; // randomly dane baam jabe
-
- if (db==0  && bcol > 0) { // baam e
+ int direction = rand() % 2;
+ if (direction == 0 && bcol > 0) {
 --bcol;
  }
- else if (db==1  && bcol < bsz - 1) { // daan e
+ else if (direction == 1 && bcol < bsz - 1) {
 ++bcol;
  }
+ ++brow;
  }
 
-++brow;
- if (brow == prow && bcol == pcol ||move=='s' ) { // point peyeche as dhorse
+ if (brow == prow && bcol == pcol  ) { // point peyeche as dhorse
 score++;
  brow = 0;
  bcol = rand() % bsz;
@@ -107,7 +115,7 @@ score++;
 brd[brow][bcol] = ball;// abar shuru
 
 
-if (brow == bsz - 1 || move=='e') { // exit dile or miss hole
+if (brow == bsz - 1 || move=='e'|| move=='s') { // exit dile or miss hole
  gameRunning = 0; // while loop bhangte, life kmbe
  }
 
@@ -115,8 +123,19 @@ if (brow == bsz - 1 || move=='e') { // exit dile or miss hole
 }
 }
 
+system("cls");
+ if (move!='s')
+ {
+  if (move!='e')
 
-printf(" \n Game over! Your score: %d \n",score);
+{printf("life left : 0  \n Game over! Your score: %d\n" , score );
+replay=0;
+printf("Wanna play again? press 1 to replay -" ) ;
+scanf("%d",&replay);}}
+
+system("cls");
+}
+}
 
 return 0;
 
