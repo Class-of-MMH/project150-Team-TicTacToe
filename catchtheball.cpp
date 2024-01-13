@@ -10,20 +10,20 @@ const char ball = 'O';
 const char player = 'P';
 
 void playSound(const char* soundFile, DWORD flags = SND_FILENAME | SND_ASYNC) {
-    PlaySound(TEXT(soundFile), NULL, flags);
+    PlaySound(TEXT(soundFile), NULL, flags);//  gaan er function
 }
 
 int main() {
     srand(time(0));
 
-    // Play background sound at the beginning of the game
-   playSound("backsound.wav", SND_FILENAME | SND_ASYNC | SND_LOOP);
+    // gaan bajanor jonno eirokom files
+   playSound("backsound.wav", SND_FILENAME | SND_ASYNC | SND_LOOP);// ekdom prothome gaan
 
     int rst = 1;
     char move = 's';
 
     while (rst && move == 's') {
-             playSound("backsound.wav", SND_FILENAME | SND_ASYNC | SND_LOOP);
+             playSound("backsound.wav", SND_FILENAME | SND_ASYNC | SND_LOOP // restart dile gaan
         move = ' ';
         int bsz, lev; // board size and level
         cout << "Choose a level: \n 1. easy   2. medium   3. hard\n press a number 1/2/3: ";
@@ -55,7 +55,7 @@ int main() {
         while (replay) {
             if (move == 'e' || move == 's')
                 break;
-                int rpl=0;// repay loop er under e ami replay 1 dile replay hobe
+                //int rpl=0;// repay loop er under e ami replay 1 dile replay hobe // lage ni ar
 
 
             for (int pl = 0; pl < life; pl++) {
@@ -69,7 +69,7 @@ int main() {
                     brow = 0;              // abar ball porbe
                     bcol = rand() % bsz;
                     brd[brow][bcol] = ball; // ball set
-                  playSound("nocatchsound.wav");
+                  playSound("nocatchsound.wav"); // miss jai, life harai
                 }
 
                 while (gameRunning) { // jotokkon true
@@ -95,7 +95,7 @@ int main() {
                     cin >> move; // left right input
 
                     // Play move sound for each move
-                    playSound("movesound.wav");
+                    playSound("movesound.wav"); // proti move er sound
 
                     brd[prow][pcol] = blank; // nw position e jabe ager position empty
 
@@ -144,7 +144,7 @@ int main() {
             if (move != 's') {
                 if (move != 'e') {
                     // game over howar por sound
-                    playSound("gameover.wav");
+                    playSound("gameover.wav"); // game over hoile
 
                     cout << "life left : 0 " << endl
                          << "Game over! Your score: " << score << endl;
